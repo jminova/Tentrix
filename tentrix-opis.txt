@@ -1,0 +1,20 @@
+Generovanie hracieho poľa: 
+-po spustení hry sa v cykle vytvorí hracie pole danej veľkosti, pričom na začiatku sú všetky políčka poľa obsadené dlaždicami typu NoShape
+- zároveň sa vygenerujú prvé tri dlaždice, ktoré bude hráč môcť počas hry použiť
+
+
+Overovanie stavov hry:
+-po každom pridaní dlaždice do poľa sa skontroluje, či je hra prehratá alebo nie:
+	a) hra je prehratá vtedy, ak pre dostupné dlaždice neexistuje voľné miesto, to sa overuje po pridaní každej dlaždice (čiže po použití funkcie addTile) funkciou freeSpace
+	b)ak hra nie je prehratá, hrá sa ďalej, pričom sa funkciou fullLine kontroluje, či nedošlo ku situácii kedy sa po vložení dlaždice do hracieho poľa úplne zaplní riadok(riadky)
+	 alebo stĺpec (stĺpce) poľa alebo oboje naraz
+
+
+Ťah hráča:
+- ťah hráča spočíva vo vložení dlaždice do poľa
+- hráč má na výber tri dostupné dlaždice, z ktorých si môže vybrať jednu, ktorú chce vložiť, pričom určí taktiež aj súradnice kam 
+- pridanie dlaždice do poľa prebehne pomocou funkcie addTile, počas pridávania sa overuje funkciou positionAvailable, či je možné na dané miesto dlaždicu vložiť, respektíve či sa na danom 
+mieste nenachádza iná dlaždica, poprípade či sa dlaždica nevkladá mimo poľa
+- ak nie je možné dlaždicu na isté miesto vložiť, dlaždica ostáva v poli dostupných dlaždíc a hráč má možnosť pridať ju na iné miesto 
+- ak sa dlaždica úspešne pridá do poľa, je odstránená z poľa dostupných dlaždíc
+- ak hráč využije všetky dostupné dlaždice následne sa pomocou funkcie generateTiles vygenerujú ďalšie tri dlaždice, ktoré hráč môže použiť 
