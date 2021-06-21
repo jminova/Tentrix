@@ -1,0 +1,169 @@
+/**
+ * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
+ *
+ * You may not modify, use, reproduce, or distribute this software except in
+ * compliance with  the terms of the License at:
+ * http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+ */
+
+body {
+    background-color: #f1f2f0;
+    font-size: 15px;
+    font-family: Bahnschrift, Verdana, "Verdana CE",  Arial, "Arial CE", "Helvetica CE", sans-serif;
+    color: #000000;
+    margin: 10px;
+}
+label{
+    vertical-align: top;
+    display: inline-block;
+    min-width: 4rem;
+}
+.rows{
+    display:flex;
+    flex-direction:row;
+
+}
+.columnTile{
+    margin-right:1rem;
+    width: 10rem;
+    cursor: grab;
+
+}
+
+.field{
+    border-collapse:collapse;
+    border: 5px solid #112578;
+    margin-left: 3rem;
+
+}
+
+h1 {
+    font-family: Bahnschrift, "Arial", "Helvetica CE", sans-serif;
+    font-size:  32px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #3e004a;
+}
+
+h2 {
+    font-family: Bahnschrift, "Arial", "Helvetica CE", sans-serif;
+    font-size:  20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #3e004a;
+}
+
+a:link, a:visited {
+  color: #3e004a;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #3e004a;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+.error-message {
+  color: #d20005;
+  font-family: 'New Century Schoolbook', serif;
+  font-style: oblique;
+  text-decoration: overline;
+}
+
+table {
+    border-collapse: collapse;
+    border: 5px dotted #3e004a;
+}
+.table_s{
+    margin-left:0.5rem;
+}
+.sc{
+    padding:0.3rem;
+}
+.com{
+    padding: 0.5rem;
+}
+@keyframes colours {
+  from {background-color: white;}
+  to {background-color: red;}
+}
+.failed{
+    width:6.5rem;
+    height: 2rem;
+    color:#8b0000;
+    animation-name:colours;
+    animation-duration:2s;
+}
+.comment{
+    width: 15rem;
+    height: 0.3rem;
+}
+.playing{
+    color:#098207;
+}
+.state{
+    margin-left:9rem;
+    margin-bottom:1rem;
+}
+.intro{
+    width: 23rem;
+    font-size:0.78rem;
+}
+.new{
+    margin-left:9rem;
+}
+input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #3e004a;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input:checked {
+  border: 6px solid #fbff00;
+}
+textarea{
+    border: 5px solid #3e004a;
+}
+.row{
+    margin-left:1rem;
+    width:19rem;
+}
+
+.splayer{
+    margin-right:1rem;
+}
+.score{
+    text-align:right;
+}
+.tentrix {
+        display: grid;
+        grid-template-columns:  29rem 34rem 23rem;
+        grid-template-rows: auto auto auto;
+    }
+.tentrix>main{
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+.tentrix>nav{
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+.tentrix>.row{
+    grid-column-start: 3;
+        grid-row-start: 1;
+}

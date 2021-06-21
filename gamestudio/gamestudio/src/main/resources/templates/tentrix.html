@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tentrix</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/tentrix-minova.css"/>
+</head>
+<body class="tentrix">
+
+<nav class="navtentrix">
+    <h1>Welcome to <a href="/">Gamestudio</a>!</h1>
+
+    <h1>Tentrix</h1>
+    <div class="intro">
+    <p>Hello! Let's play Tentrix! Let me give you some introduction:
+        Tentrix is a game similar to Tetris, meaning you have to organize available tiles into row or column.
+        You'll get three available tiles, when you use all three you'll get another three.
+        Remember, if you won't be able to add another tile, game's over and you lose.
+        If you want to add a tile into the field, grab a tile and put it into the field.
+        INFO: it's better if you grab a tile by its (upper)leftmost position, because field adds tiles based on their leftmost position
+        (except the tiles in this shape:</p>
+        <div class="rows">
+            <div class="columns">
+        <img src="/images/tentrix/orangerd.png">
+            </div>
+        <div class="columns">
+        <img src='/images/tentrix/greenrd.png'>
+        </div>
+        </div>
+       <p> in those two cases it is the upper rightmost position) so be attentive while grabbing them.
+        Enjoy! :)
+    </p>
+    </div>
+
+        <h1>Scores</h1>
+    <table class="table_s">
+        <tr th:each="score : ${scores}">
+            <td class="sc"><span th:text="${score.player}" class="splayer"/></td>
+            <td class="sc"><span th:text="${score.points}" class="score"/></td>
+        </tr>
+    </table>
+
+
+    </nav>
+<br>
+<main class="maintentrix">
+    <div th:if="${@tentrixController.gameState}" class="state">
+        <h2 class="playing"><b>PLAYING</b></h2>
+    </div>
+    <div th:if="${not @tentrixController.gameState}" class="state">
+        <h1 class="failed">FAILED</h1>
+    </div>
+    <a href="/tentrix-minova/new" class="new">New game</a>
+    <br>
+<div th:utext="${@tentrixController.htmlField}"/>
+</main>
+
+<br>
+<div class="row">
+
+    <div class="column">
+        <h1>Ratings</h1>
+        <h2>Average rating: <span th:text="${averageRating}"/></h2>
+
+        <br>
+        <div th:if="${@userController.logged}">
+            <h2>Your rating: <span th:text="${playerRating}"/></h2>
+            Please leave us your rating :):
+            <br>
+            <form id="form">
+                <input type="radio" name = "rate" id="one" value="1">
+                <label for="one">1</label>
+                <input type="radio" name = "rate" id="two" value="2">
+                <label for="two">2</label>
+                <input type="radio" name = "rate" id="three" value="3">
+                <label for="three">3</label>
+                <input type="radio" name = "rate" id="four" value="4">
+                <label for="four">4</label>
+                <input type="radio" name = "rate" id="five" value="5">
+                <label for="five">5</label>
+                <br>
+                <br>
+                <button th:onclick="rating(event,[[${@userController.loggedUser}]])" type="button">Rate</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="column">
+<h1>Comments</h1>
+<table class="comment">
+    <tr th:each="comment : ${comments}">
+        <td class="com"><span th:text="${comment.player}"/>:</td>
+        <td class="com"><span th:text="${comment.comment}"/></td>
+    </tr>
+</table>
+        <br>
+        <form th:if="${@userController.logged}">
+            <label for="commContent">Leave a comment if you feel like it:</label>
+            <br>
+            <textarea
+                    name="commentContent" id="commContent"
+                    cols="30" rows="5" required></textarea>
+            <button th:onclick="comment(event,[[${@userController.loggedUser}]])" type="button">Comment</button>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript" th:src="@{/js/dragndrop.js}"></script>
+<script type="text/javascript" th:src="@{/js/services.js}"></script>
+</body>
+</html>
